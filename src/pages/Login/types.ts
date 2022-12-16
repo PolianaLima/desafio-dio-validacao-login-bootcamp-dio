@@ -7,3 +7,10 @@ export const defaultValues: IFormLogin = {
     email: '',
     password: ''
 }
+
+
+export interface IButtonProps {
+    title: string;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    disabled?: boolean ; 
+}

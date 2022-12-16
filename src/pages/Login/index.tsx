@@ -1,10 +1,9 @@
 import { useForm } from "react-hook-form";
-import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
+import { Container, LoginContainer, Column, Spacing, Title,ButtonContainer } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
 
 const schema = yup
@@ -20,13 +19,23 @@ const schema = yup
 const Login = () => {
   const {
     control,
-    formState: { errors, isValid },
+    formState: { errors, isValid},
   } = useForm<IFormLogin>({
     resolver: yupResolver(schema),
     mode: "onBlur",
     defaultValues,
     reValidateMode: "onChange",
   });
+
+
+  //console.log(isValid);
+
+ 
+  
+  function clicar() {
+    console.log("cliquei")
+  }
+
 
   return (
     <Container>
@@ -49,7 +58,14 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <>
+            
+            <ButtonContainer  onClick={clicar} disabled={!isValid} >Entrar</ButtonContainer>
+        
+          </>
+
+   
+        
         </Column>
       </LoginContainer>
     </Container>
